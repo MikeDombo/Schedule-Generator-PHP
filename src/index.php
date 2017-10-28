@@ -20,9 +20,8 @@ if(isset($_GET["i"])){
 
 		foreach($courses as $k => $v){
 			$course = ["name" => $v["Course Name"], "FOS" => $v["Field of Study"], "num" => $v["course number"],
-				"units" => $v["Units"], "ID" => $k];
+				"units" => $v["Units"], "ID" => $k+1];
 
-			$numSection += count($v["sections"]);
 			$sections = [];
 			foreach($v["sections"] as $k2 => $section){
 				$tempSection = [];
@@ -32,6 +31,7 @@ if(isset($_GET["i"])){
 					$tempSection["crn"] = $section["crn"];
 					unset($section["crn"]);
 				}
+				$tempSection["id"] = $numSection++;
 
 				foreach($section as $k3 => $dayTimes){
 					$tempSection["dayTimes"][] = ["day" => $dayTimes["day"], "fromTime" => $dayTimes["from"],

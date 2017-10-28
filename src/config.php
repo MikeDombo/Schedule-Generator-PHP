@@ -26,7 +26,8 @@ function generatePug($view, $title, $options = [], $prettyPrint = false){
 
 	$pug = new \Pug\Pug(['pretty' => $prettyPrint, 'strict' => true, "expressionLanguage" => "js",
 		"pugjs" => true, "localsJsonFile" => true,
-		"cache" => getcwd()."/pug-cache"]);
+		//"cache" => getcwd()."/pug-cache", "upToDateCheck" => true
+	]);
 	return $pug->renderFile($view, $options);
 }
 

@@ -16,77 +16,24 @@ block after_head
 		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 		ga('create', 'UA-69105822-1', 'auto');
 		ga('send', 'pageview');
-		window.alert('If you are a University of Richmond student, there is a specialized version of this website available at http://mikedombrowski.com/ur');
 block content
 	.container-fluid
 		h2 Make A Schedule
-		.row
+		.row.col-md-12
 			.panel-group#all-courses
 				if editMode
 					each course in courseEdit
-						+courseEntryPanel(course.name, course.FOS, course.num, course.units, course.sections, course.ID)
+						+courseEntryPanel(false, course.name, course.FOS, course.num, course.units, course.sections,
+						course.ID)
 				else
-					+courseEntryPanel()
-		.row.col-sm-6
-			button.btn.btn-success.btn-submit.glyphicon.glyphicon-check Submit
+					+courseEntryPanel(false)
+		.row.col-sm-6.col-sm-offset-3(style="margin-bottom:1em;")
+			button.btn.btn-success.btn-submit.glyphicon.glyphicon-check.btn-block Submit
+
+		// Templates
 		.hide
-			.panel.panel-default.course-template
-				.panel-heading
-					h1#course1.panel-title.pull-left
-					form.form-inline.pull-left.course-control(role="form", autocomplete="off")
-						.entry.form-group.course-control.has-error
-							| Name
-							label(style="color:red;") *
-							| :
-							input#name1.form-control.name(name="fields[]", type="text", placeholder="Enter Course Name", required="required")
-							| Field of Study:
-							input.form-control.fos(name="fields[]", type="text", placeholder="ex. CMSC", style="text-transform: uppercase", maxlength="4")
-							| Course Number:
-							input.form-control.cn(name="fields[]", type="text", placeholder="ex. 101", maxlength="3")
-							| Number of Units:
-							input.form-control.units(name="fields[]", type="text", placeholder="ex. 1", maxlength="3")
-					button.btn.btn-success.btn-add.pull-right.btn-add-course(type="button")
-						span.glyphicon.glyphicon-plus
-					button.btn.btn-danger.btn-remove.pull-right(type="button")
-						span.glyphicon.glyphicon-minus
-					.clearfix
-				.panel-body
-					h3 Enter Section Details
-					.col-md-4.section-template
-						.panel.panel-default
-							.panel-heading
-								h1#course1.panel-title.pull-left.new-course Section 1
-								button.btn.btn-success.btn-add.pull-right.btn-add-section.glyphicon.glyphicon-plus(type="button", style="line-height: 1!important;")
-								button.btn.btn-danger.btn-remove-section.pull-right(type="button", style="line-height: 1!important;")
-									span.glyphicon.glyphicon-minus
-								.clearfix
-							.panel-body
-								form.form.section-control(role="form", autocomplete="off")
-									input.form-control.crn(type="text", placeholder="CRN Number", style="margin:1px;")
-									.time-template
-										.row.col-md-12.input-group(style="margin:1px;")
-											select.form-control.day
-												option Monday
-												option Tuesday
-												option Wednesday
-												option Thursday
-												option Friday
-												option Saturday
-												option Sunday
-											span.input-group-btn
-												button.btn.btn-danger.btn-remove-time.glyphicon.glyphicon-minus(type="button", style="line-height: 1!important;")
-												button.btn.btn-success.btn-add.btn-add-time.glyphicon.glyphicon-plus(type="button", style="line-height: 1!important;")
-										.row.col-md-12
-											.col-md-6.bootstrap-timepicker.timepicker
-												label.control-label From:
-												input#timepicker1.form-control.input-small.from.time(type="text")
-												span.input-group-addon
-													i.glyphicon.glyphicon-time
-											.col-md-6.bootstrap-timepicker.timepicker
-												label.control-label To:
-												input#timepicker2.form-control.input-small.to.time(type="text")
-												span.input-group-addon
-													i.glyphicon.glyphicon-time
+			+courseEntryPanel(true)
+
 		#no-name-error.modal.fade(tabindex="-1", role="dialog")
 			.modal-dialog.has-error
 				.modal-content

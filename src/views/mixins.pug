@@ -1,22 +1,23 @@
-mixin courseEntryPanel(courseName, FOS, courseNum, units, detailArr, id)
-	- courseName = courseName || ""
-	- FOS = FOS || ""
-	- courseNum = courseNum || ""
-	- units = units || ""
-	- detailArr = detailArr || [{crn:"", dayTimes:[{}]}]
-	- id = id || 1
+mixin courseEntryPanel(template, courseName, FOS, courseNum, units, detailArr, id)
+	- courseName = courseName || "";
+	- FOS = FOS || "";
+	- courseNum = courseNum || "";
+	- units = units || "";
+	- detailArr = detailArr || [{crn:"", dayTimes:[{}]}];
+	- id = id || 1;
 
-	.panel.panel-default(style="margin-bottom:5px;")
+	.panel.panel-default(style="margin-bottom:5px;" class=template ? "course-template" : "")
 		.panel-heading
-			h1(id="course"+id).panel-title.pull-left #{courseName}
-			br
-			hr(id="hr"+id style="width:100%; border-top:1px solid #FFFFFF;")
+			h4(id="course"+id).pull-left #{courseName}
+			if courseName !== ""
+				br
+				hr(id="hr"+id style="width:100%; border-top:1px solid #FFFFFF;")
 			form.form-inline.pull-left.course-control(role="form", autocomplete="off")
-				.entry.form-group.course-control
+				.entry.form-group.course-control(class=courseName === "" ? "has-error":"")
 					| Name
 					label(style="color:red;") *
 					| :
-					input#name1.form-control.name(name="fields[]", type="text", placeholder="Enter Course Name",
+					input.form-control.name(id="name"+id name="fields[]", type="text", placeholder="Enter Course Name",
 					value=courseName)
 					| Field of Study:
 					input.form-control.fos(name="fields[]", type="text", placeholder="ex. CMSC",
@@ -34,11 +35,11 @@ mixin courseEntryPanel(courseName, FOS, courseNum, units, detailArr, id)
 			.clearfix
 		.panel-body
 			h3 Enter Section Details
-			each val, sectionID in detailArr
-				+courseDetailPanel(id, sectionID+1, val.crn, val.dayTimes)
+			each v in detailArr
+				+courseDetailPanel(template, id, v.id+1, v.crn, v.dayTimes)
 
-mixin courseDetailPanel(courseID, sectionID, crn, dayTimes)
-	.col-md-4
+mixin courseDetailPanel(template, courseID, sectionID, crn, dayTimes)
+	.col-md-4(class=template ? "section-template" : "")
 		.panel.panel-default
 			.panel-heading
 				h1(id="course"+courseID).panel-title.pull-left.new-course Section #{sectionID}
@@ -50,10 +51,10 @@ mixin courseDetailPanel(courseID, sectionID, crn, dayTimes)
 				form.form.section-control(role="form", autocomplete="off")
 					input.form-control.crn(type="text", placeholder="CRN Number", style="margin:1px;", value=crn)
 					each dayData in dayTimes
-						+courseTimePanel(dayData.day, dayData.fromTime, dayData.toTime)
+						+courseTimePanel(template, dayData.day, dayData.fromTime, dayData.toTime)
 
-mixin courseTimePanel(day, fromTime, toTime)
-	div
+mixin courseTimePanel(template, day, fromTime, toTime)
+	div(class=template ? "time-template" : "")
 		.row.col-md-12.input-group(style="margin:1px;")
 			select.form-control.day
 				+optionSelection("Monday", day)
@@ -78,8 +79,8 @@ mixin courseTimePanel(day, fromTime, toTime)
 				span.input-group-addon
 					i.glyphicon.glyphicon-time
 
-mixin optionSelection(name, val)
-	if name === val
+mixin optionSelection(name, v)
+	if name === v
 		option(selected="selected") #{name}
 	else
 		option #{name}
