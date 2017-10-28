@@ -39,22 +39,17 @@ class ScheduleGenerateBronKerbosch extends \ScheduleGenerate {
 			if(count($r) == 0){
 				return;
 			}
-			$requiredCourses = 0;
+
 			$a = new Schedule();
 			foreach($r as $b){
 				$b = $this->allSections[$b];
 				/** @var $b \Section */
-				if($b->isRequiredCourse()){
-					$requiredCourses++;
-				}
 				$a->addSection($b);
 			}
 
-			if($requiredCourses == $this->ingest->getRequiredCourseNum()){
-				$a->setScore($this->ingest->getMorning());
-				$this->schedules->insert($a);
-				$this->numSchedules++;
-			}
+			$a->setScore(true);
+			$this->schedules->insert($a);
+			$this->numSchedules++;
 		}
 
 		foreach($p as $v){

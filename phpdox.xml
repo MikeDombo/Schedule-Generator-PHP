@@ -45,7 +45,6 @@
             <!--  Multiple elements can be added to define more than one mask per filter -->
 			<exclude mask="**/config.php" />
 			<exclude mask="**vendor**" />
-			<exclude mask="**importer/Classes**" />
             <include mask="*.php" />
 
             <!--  How to handle inheritance -->

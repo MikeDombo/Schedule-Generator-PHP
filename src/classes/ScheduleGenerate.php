@@ -76,20 +76,14 @@ class ScheduleGenerate {
 		});
 
 		if(count($temp) == 0){
-			$requiredCourses = 0;
 			$a = new Schedule();
 			foreach($curr as $b){
-				if($b->isRequiredCourse()){
-					$requiredCourses++;
-				}
 				$a->addSection($b);
 			}
 
-			if($requiredCourses == $this->ingest->getRequiredCourseNum()){
-				$a->setScore($this->ingest->getMorning());
-				$this->schedules->insert($a);
-				$this->numSchedules++;
-			}
+			$a->setScore(true);
+			$this->schedules->insert($a);
+			$this->numSchedules++;
 		}
 		else{
 			foreach($temp as $k => $v){
@@ -125,9 +119,6 @@ class ScheduleGenerate {
 			foreach($a->getSchedule() as $b){
 				/** @var Section $b */
 				foreach($b->getCRN() as $crn){
-					if($b->preregistered){
-						$crn = "<em>" . $crn . "</em>";
-					}
 					$crnList = $crnList . ", " . $crn;
 				}
 				$crns = $b->getCRN()[0];
@@ -139,7 +130,6 @@ class ScheduleGenerate {
 				}
 				$listRows[] = ["color" => $this->makeColorString($b->getColor()), "crns" => $crns,
 					"coursenum" => $b->getCourseNumber(), "fos" => $b->getFieldOfStudy(),
-					"preregistered" => $b->preregistered, "prof" => $b->getProf(),
 					"title" => $b->getCourseTitle(), "titleWithDate" => $b->__toString()];
 			}
 
@@ -181,8 +171,7 @@ class ScheduleGenerate {
 						$rows[$rowCount]["rowData"][] = ["color" => $this->makeColorString($v[Schedule::intToDay($i)]->getColor()),
 							"crns" => $crns, "coursenum" => $v[Schedule::intToDay($i)]->getCourseNumber(),
 							"fos" => $v[Schedule::intToDay($i)]->getFieldOfStudy(),
-							"preregistered" => $v[Schedule::intToDay($i)]->preregistered,
-							"title" => $v[Schedule::intToDay($i)]->getCourseTitle(), "prof" => $v[Schedule::intToDay($i)]->getProf()];
+							"title" => $v[Schedule::intToDay($i)]->getCourseTitle()];
 					}
 					else{
 						$rows[$rowCount]["rowData"][] = ["empty" => true];

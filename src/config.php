@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) { //load all external classes to run the
 });
 require_once(__DIR__ . '/vendor/autoload.php');
 
-define("SUBDIR", "/ur/src");
+define("SUBDIR", "/Schedule-Generator-PHP/src");
 
 /**
  * Returns Pug (Jade) rendered HTML for a given view and options
@@ -16,7 +16,7 @@ define("SUBDIR", "/ur/src");
  * @param bool $prettyPrint If prettyPrint is false, all HTML is on a single line
  * @return string Pug generated HTML
  */
-function generatePug($view, $title, $options = [], $prettyPrint = false){
+function generatePug($view, $title, $options = [], $prettyPrint = true){
 		$initialOptions = [
 		'title' => $title,
 		'subdir' => SUBDIR,
@@ -24,8 +24,8 @@ function generatePug($view, $title, $options = [], $prettyPrint = false){
 
 	$options = array_merge($initialOptions, $options);
 
-	$pug = new Pug\Pug(['prettyprint' => $prettyPrint]);
-	return $pug->render($view, $options);
+	$pug = new \Pug\Pug(['pretty' => $prettyPrint, 'expressionLanguage' => 'js', "pugjs" => true, 'localsJsonFile' => true]);
+	return $pug->renderFile($view, $options);
 }
 
 function SRIChecksum($input){

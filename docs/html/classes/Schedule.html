@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - Schedule</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">Schedule</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/classes/Schedule.php.html#line11">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>Schedule</h1>
+        <h4>Authored by Michael Dombrowski, http://mikedombrowski.com Original repository available at http://github.com/md100play/university-schedule-generator</h4>
+        <p>This class essentially holds many sections that represent a single schedule option. It includes variables for ease<br/>of use like,<br/>$numberOfClasses, $numberOfUnits, $earliestTime, $latestTime, $firstTime, $lastTime, $fridayFree, and $score.</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Schedule
+            {<br/><ul class="none"><li>// members</li><li>public  <a href="#members">$score</a>;
+                    </li><li>private <span title="array|Section">array|Section</span> <a href="#members">$listOfSections</a>;
+                    </li><li>private  <a href="#members">$numberOfClasses</a>;
+                    </li><li>private  <a href="#members">$numberOfUnits</a>;
+                    </li><li>private  <a href="#members">$earliestTime</a>;
+                    </li><li>private  <a href="#members">$latestTime</a>;
+                    </li><li>private  <a href="#members">$firstTime</a>;
+                    </li><li>private  <a href="#members">$lastTime</a>;
+                    </li><li>private <span title="bool">bool</span> <a href="#members">$fridayFree</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="Schedule" href="../classes/Schedule/__construct.html">__construct</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/addSection.html">addSection</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/generateFirstLastTimes.html">generateFirstLastTimes</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/setScore.html">setScore</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/getCPD.html">getCPD</a>()
+                    </li><li>public static int <a title="Schedule" href="../classes/Schedule/dayToInt.html">dayToInt</a>()
+                    </li><li>public static string <a title="Schedule" href="../classes/Schedule/intToDay.html">intToDay</a>()
+                    </li><li>public array|Section <a title="Schedule" href="../classes/Schedule/getSchedule.html">getSchedule</a>()
+                    </li><li>public int <a title="Schedule" href="../classes/Schedule/getNumClasses.html">getNumClasses</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/getEarliestTime.html">getEarliestTime</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/getlatestTime.html">getlatestTime</a>()
+                    </li><li>public bool <a title="Schedule" href="../classes/Schedule/fridayFree.html">fridayFree</a>()
+                    </li><li>public int <a title="Schedule" href="../classes/Schedule/getNumUnits.html">getNumUnits</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/getLastTime.html">getLastTime</a>()
+                    </li><li>public void <a title="Schedule" href="../classes/Schedule/getFirstTime.html">getFirstTime</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="earliestTime">
+              <strong>$earliestTime</strong>
+            </li>
+            <li id="firstTime">
+              <strong>$firstTime</strong>
+            </li>
+            <li id="fridayFree"><strong>$fridayFree</strong>
+                —
+                <a title="bool" href="../classes/bool.html">bool</a></li>
+            <li id="lastTime">
+              <strong>$lastTime</strong>
+            </li>
+            <li id="latestTime">
+              <strong>$latestTime</strong>
+            </li>
+            <li id="listOfSections"><strong>$listOfSections</strong>
+                —
+                <a title="array|Section" href="../classes/array|Section.html">array|Section</a></li>
+            <li id="numberOfClasses"><strong>$numberOfClasses</strong>
+                —
+                int</li>
+            <li id="numberOfUnits"><strong>$numberOfUnits</strong>
+                —
+                int</li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="score"><strong>$score</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="Schedule" href="../classes/Schedule/__construct.html">__construct()</a>
+                — Default constructor to initialize critical values</li>
+            <li id="addSection"><a title="Schedule" href="../classes/Schedule/addSection.html">addSection()</a>
+                — Adds a single section to the list of sections and updates important variables, much like addTime in the Section class</li>
+            <li id="dayToInt">
+              <a title="Schedule" href="../classes/Schedule/dayToInt.html">dayToInt()</a>
+            </li>
+            <li id="fridayFree">
+              <a title="Schedule" href="../classes/Schedule/fridayFree.html">fridayFree()</a>
+            </li>
+            <li id="generateFirstLastTimes">
+              <a title="Schedule" href="../classes/Schedule/generateFirstLastTimes.html">generateFirstLastTimes()</a>
+            </li>
+            <li id="getCPD"><a title="Schedule" href="../classes/Schedule/getCPD.html">getCPD()</a>
+                — This function calculates the number of classes on each day</li>
+            <li id="getEarliestTime">
+              <a title="Schedule" href="../classes/Schedule/getEarliestTime.html">getEarliestTime()</a>
+            </li>
+            <li id="getFirstTime">
+              <a title="Schedule" href="../classes/Schedule/getFirstTime.html">getFirstTime()</a>
+            </li>
+            <li id="getLastTime">
+              <a title="Schedule" href="../classes/Schedule/getLastTime.html">getLastTime()</a>
+            </li>
+            <li id="getNumClasses">
+              <a title="Schedule" href="../classes/Schedule/getNumClasses.html">getNumClasses()</a>
+            </li>
+            <li id="getNumUnits">
+              <a title="Schedule" href="../classes/Schedule/getNumUnits.html">getNumUnits()</a>
+            </li>
+            <li id="getSchedule">
+              <a title="Schedule" href="../classes/Schedule/getSchedule.html">getSchedule()</a>
+            </li>
+            <li id="getlatestTime">
+              <a title="Schedule" href="../classes/Schedule/getlatestTime.html">getlatestTime()</a>
+            </li>
+            <li id="intToDay">
+              <a title="Schedule" href="../classes/Schedule/intToDay.html">intToDay()</a>
+            </li>
+            <li id="setScore"><a title="Schedule" href="../classes/Schedule/setScore.html">setScore()</a>
+                — This function sets the score variable that is used to sort all schedules based on number of classes, number of units, classes per day, and the earliest time classes occur</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2017-10-28T03:53:09+02:00 (commit #<span title="48b40fe38f2c7d7baed74e2cb6cbdb9871dbf187">48b40fe</span>)</h3>
+            <div>
+              <p>
+                        Author: Michael Dombrowski (Michael@mikedombrowski.com) /
+                        Commiter: Michael Dombrowski (Michael@mikedombrowski.com)
+                    </p>
+              <pre class="wrapped">Begin updates</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2016-06-11T04:37:22+02:00 (commit #<span title="bdd2ce8c8d9aeea2905a5c77e4ef393f1fdd90bc">bdd2ce8</span>)</h3>
+            <div>
+              <p>
+                        Author: Michael Dombrowski (Michael@mikedombrowski.com) /
+                        Commiter: Michael Dombrowski (Michael@mikedombrowski.com)
+                    </p>
+              <pre class="wrapped">Original version</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.9.0 - Copyright (C) 2010 - 2017 by Arne Blankerts</span>
+    </footer>
+  </body>
+</html>
