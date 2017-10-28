@@ -1,7 +1,7 @@
 <?php
 require_once("config.php");
 
-$options = ["editMode" => false];
+$options = ["editMode" => false, "numCourse" => 1, "numSection" => 1];
 $courses = [];
 if(isset($_GET["i"])){
 	$get = $_GET["i"];

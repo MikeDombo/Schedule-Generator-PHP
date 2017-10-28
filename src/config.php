@@ -16,7 +16,7 @@ define("SUBDIR", "/Schedule-Generator-PHP/src");
  * @param bool $prettyPrint If prettyPrint is false, all HTML is on a single line
  * @return string Pug generated HTML
  */
-function generatePug($view, $title, $options = [], $prettyPrint = true){
+function generatePug($view, $title, $options = [], $prettyPrint = false){
 		$initialOptions = [
 		'title' => $title,
 		'subdir' => SUBDIR,
@@ -24,7 +24,9 @@ function generatePug($view, $title, $options = [], $prettyPrint = true){
 
 	$options = array_merge($initialOptions, $options);
 
-	$pug = new \Pug\Pug(['pretty' => $prettyPrint, 'expressionLanguage' => 'js', "pugjs" => true, 'localsJsonFile' => true]);
+	$pug = new \Pug\Pug(['pretty' => $prettyPrint, 'strict' => true, "expressionLanguage" => "js",
+		"pugjs" => true, "localsJsonFile" => true,
+		"cache" => getcwd()."/pug-cache"]);
 	return $pug->renderFile($view, $options);
 }
 
