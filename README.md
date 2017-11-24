@@ -14,7 +14,7 @@ Right now it is available at http://mikedombrowski.com/sched/.
 3. Edit `config.php` and change the `SUBDIR` constant to reflect your installation location
 
 ## PHP API Documentation
-Available at https://md100play.github.io/Schedule-Generator-PHP/html/index.html
+Available at https://MikeDombo.github.io/Schedule-Generator-PHP/html/index.html
 
 ## Theory of Operation
 The new algorithm implemented by commit 48b40fe is the Bron-Kerbosch maximal clique finding algorithm. I realized that the scheduling program could be thought of as a graph where vertices represent a section of a class and edges exist between vertices that are compatible (can be taken together).
