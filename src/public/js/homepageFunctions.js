@@ -93,7 +93,7 @@ $(document).on("click", ".btn-add-course", function (e){
 	numCourse++;
 	$newPanel.find("h4").attr("id", "course" + numCourse);
 	$newPanel.find("#name1").attr("id", "name" + numCourse);
-	$newPanel.find("h4").each(function (){
+	$newPanel.find("h1").each(function (){
 		if($(this).attr("class").indexOf("new-course") > -1){
 			$(this).text("Section " + (++numSection));
 		}
@@ -158,6 +158,11 @@ $(document).on("click", ".btn-submit", function (e){
 	let numSection = 0;
 	let numDay = 0;
 	$form.each(function (){
+		// Template found
+		if($(this).parents(".course-template").length > 0){
+			return;
+		}
+
 		let c = $(this).attr("class");
 		if(c.indexOf("course-control") > -1){
 			courseNum++;
@@ -169,8 +174,7 @@ $(document).on("click", ".btn-submit", function (e){
 			$(this).find("input, select").each(function (){
 				let d = $(this).attr("class");
 				if(d.indexOf("name") > -1){
-					if($(this).val() === "" && !($(this).parent().parent().parent().parent().attr("class")
-					                                    .indexOf("template") > -1)){
+					if($(this).val() === ""){
 						name = false;
 					}
 					output[courseNum]["Course Name"] = $(this).val();

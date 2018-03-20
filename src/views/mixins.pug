@@ -3,7 +3,7 @@ mixin courseEntryPanel(template, courseName, FOS, courseNum, units, detailArr, i
 	- FOS = FOS || "";
 	- courseNum = courseNum || "";
 	- units = units || "";
-	- detailArr = detailArr || [{crn:"", dayTimes:[{}]}];
+	- detailArr = detailArr || [{crn:"", dayTimes:[{}], id:0}];
 	- id = id || 1;
 
 	.panel.panel-default(style="margin-bottom:5px;" class=template ? "course-template" : "")
