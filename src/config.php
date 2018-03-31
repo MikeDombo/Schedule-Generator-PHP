@@ -23,10 +23,14 @@ function generatePug($view, $title, $options = [], $prettyPrint = false){
 	];
 
 	$options = array_merge($initialOptions, $options);
+	$cacheDir = getcwd()."/pug-cache";
+	if(!file_exists($cacheDir)){
+		mkdir($cacheDir);
+	}
 
 	$pug = new \Pug\Pug(['pretty' => $prettyPrint, 'strict' => true, "expressionLanguage" => "js",
 		"pugjs" => true, "localsJsonFile" => true,
-		//"cache" => getcwd()."/pug-cache", "upToDateCheck" => true
+		"cache" => $cacheDir, "upToDateCheck" => true
 	]);
 	return $pug->renderFile($view, $options);
 }
