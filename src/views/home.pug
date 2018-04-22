@@ -1,7 +1,7 @@
 extends template.pug
 include mixins.pug
 block after_head
-	script(src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js")
+	script(src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js" type="text/javascript")
 block content
 	.container-fluid
 		h2 Make A Schedule
@@ -45,7 +45,7 @@ block content
 			button.close(type="button", href="#") ×
 			strong Time Deleted!
 			a.alert-link.pull-right.undo(href="#") Undo
-	script.
+	script(type="text/javascript").
 		var numCourse = #{numCourse};
 		var numSection = #{numSection};
-	script(src=subdir+"/public/js/homepageFunctions.js")
+	script(src=subdir+"/public/js/homepageFunctions.js" type="text/javascript")

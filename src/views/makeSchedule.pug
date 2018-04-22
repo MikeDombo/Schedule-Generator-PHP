@@ -39,7 +39,7 @@ block nav
 						a
 							button.btn-listview.btn.glyphicon.glyphicon-list.btn-default(type='button') &nbsp;List View
 block content
-	script.
+	script(type="text/javascript").
 		$(document).ready(function(){
 			$('[data-toggle="popover"]').popover();
 		});
@@ -86,7 +86,7 @@ block content
 			return results[2].replace(/\\+/g, " ");
 		}
 	#results.container-fluid(style='min-height:200px;')
-	script.
+	script(type="text/javascript").
 		var count = #{max_exec_time};
 		var ptr = 0;
 		var writer = '';
