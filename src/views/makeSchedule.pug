@@ -1,6 +1,6 @@
 extends template.pug
 block nav
-	script(type='text/javascript', src=subdir+'/public/js/loadingoverlay.min.js')
+	script(type='text/javascript', src="/"+subdir+'public/js/loadingoverlay.min.js')
 	style(type="text/css").
 		td{
 			color: #000000;
@@ -20,7 +20,7 @@ block nav
 	nav.navbar.navbar-default.navbar-inverse
 		div.container-fluid
 			div.navbar-header
-				a.navbar-brand(href='#{subdir}')
+				a.navbar-brand(href='/'+subdir)
 					div.navbar-brand-name
 						span(style='color:#ffffff') Student Schedule Generator
 				button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
@@ -30,7 +30,7 @@ block nav
 			div#navbar-main.navbar-collapse.collapse
 				ul.nav.navbar-nav.navbar-right
 					li
-						a(href=subdir+"/?i="+inputDataJSON)
+						a(href="/"+subdir+"?i="+inputDataJSON)
 							button.btn.btn-default(type='button') Edit Courses
 					li
 						a
@@ -104,7 +104,7 @@ block content
 			["Capacitor", "Conductor", "Assembler", "Detector", "Post-processor", "Integrator", "Computer", "Disk",
 				"Server","Router","Calculator"]
 		];
-		var customElement = $("<img src='#{subdir}/loading-spinner.gif'></img><h3>", {
+		var customElement = $("<img src='/#{subdir}loading-spinner.gif'></img><h3>", {
 			id : "countdown",
 			text : ""
 		});
