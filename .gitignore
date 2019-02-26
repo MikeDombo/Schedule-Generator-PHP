@@ -10,3 +10,4 @@ schedules-created.txt
 error_log
 *.sqlite
 **/pug-cache
+node_modules/
