@@ -4,49 +4,59 @@
       <v-container fluid>
         <v-form @submit.prevent="() => {}">
           <v-layout row wrap>
-            <v-text-field
-              label="Name"
-              placeholder="Enter a name"
-              :value="course['Course Name']"
-              required
-              @input="
-                $emit('update:course', { ...course, 'Course Name': $event })
-              "
-              class="pr-2"
-            />
-            <v-text-field
-              label="Field of Study"
-              placeholder="ex. CMSC"
-              :value="course['Field of Study']"
-              required
-              @input="
-                $emit('update:course', { ...course, 'Field of Study': $event })
-              "
-              class="pr-2"
-            />
-            <v-text-field
-              label="Course Number"
-              placeholder="ex. 101"
-              :value="course['course number']"
-              required
-              @input="
-                $emit('update:course', { ...course, 'course number': $event })
-              "
-              class="pr-2"
-            />
-            <v-text-field
-              label="Number of Units"
-              placeholder="ex. 1"
-              :value="course.Units"
-              required
-              @input="$emit('update:course', { ...course, Units: $event })"
-            />
-            <v-flex xs1>
-              <v-layout row>
-                <v-btn icon color="success" small @click="$emit('add')">
+            <v-flex sm12 md11>
+              <v-layout row wrap>
+                <v-text-field
+                  label="Name"
+                  placeholder="Enter a name"
+                  :value="course['Course Name']"
+                  required
+                  @input="
+                    $emit('update:course', { ...course, 'Course Name': $event })
+                  "
+                  class="pr-2"
+                />
+                <v-text-field
+                  label="Field of Study"
+                  placeholder="ex. CMSC"
+                  :value="course['Field of Study']"
+                  required
+                  @input="
+                    $emit('update:course', {
+                      ...course,
+                      'Field of Study': $event
+                    })
+                  "
+                  class="pr-2"
+                />
+                <v-text-field
+                  label="Course Number"
+                  placeholder="ex. 101"
+                  :value="course['course number']"
+                  required
+                  @input="
+                    $emit('update:course', {
+                      ...course,
+                      'course number': $event
+                    })
+                  "
+                  class="pr-2"
+                />
+                <v-text-field
+                  label="Number of Units"
+                  placeholder="ex. 1"
+                  :value="course.Units"
+                  required
+                  @input="$emit('update:course', { ...course, Units: $event })"
+                />
+              </v-layout>
+            </v-flex>
+            <v-flex md1 xs12>
+              <v-layout row wrap class="inline">
+                <v-btn color="success" block @click="$emit('add')">
                   <v-icon>add</v-icon>
                 </v-btn>
-                <v-btn icon color="error" small @click="$emit('remove')">
+                <v-btn color="error" block @click="$emit('remove')">
                   <v-icon>remove</v-icon>
                 </v-btn>
               </v-layout>
@@ -72,11 +82,11 @@
                     />
                   </v-flex>
                   <v-flex xs2>
-                    <v-layout row>
-                      <v-btn icon color="success" small @click="add(index)">
+                    <v-layout row wrap class="inline">
+                      <v-btn color="success" block @click="add(index)">
                         <v-icon>add</v-icon>
                       </v-btn>
-                      <v-btn icon color="error" small @click="remove(index)">
+                      <v-btn color="error" block @click="remove(index)">
                         <v-icon>remove</v-icon>
                       </v-btn>
                     </v-layout>
@@ -99,19 +109,17 @@
                         />
                       </v-flex>
                       <v-flex xs2>
-                        <v-layout row>
+                        <v-layout row wrap class="inline">
                           <v-btn
-                            icon
                             color="success"
-                            small
                             @click="addTime(index, timeIndex)"
+                            block
                           >
                             <v-icon>add</v-icon>
                           </v-btn>
                           <v-btn
-                            icon
                             color="error"
-                            small
+                            block
                             @click="removeTime(index, timeIndex)"
                           >
                             <v-icon>remove</v-icon>
@@ -211,4 +219,18 @@ export default class CourseInput extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.btn-inline {
+}
+.inline {
+  .v-btn {
+    padding: 0;
+    margin: 2px;
+    min-width: 16px;
+    max-width: 40px;
+  }
+
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+</style>

@@ -16,7 +16,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Persistance from "vue-storage-decorator";
 import CoursesInput from "../components/CouresesInput.vue";
+const Persist = Persistance("model");
 
 @Component({
   components: {
@@ -24,6 +26,7 @@ import CoursesInput from "../components/CouresesInput.vue";
   }
 })
 export default class Home extends Vue {
+  @Persist()
   private model = [
     { sections: [{ times: [{ day: null, from: "", to: "" }] }] }
   ];
@@ -73,3 +76,5 @@ export default class Home extends Vue {
   }
 }
 </script>
+
+<style lang="scss"></style>
