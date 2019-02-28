@@ -2,67 +2,67 @@
   <v-card class="mb-5">
     <v-card-title>
       <v-container fluid>
-        <v-form @submit.prevent="() => {}">
-          <v-layout row wrap>
-            <v-flex sm12 md11>
-              <v-layout row wrap>
-                <v-text-field
-                  label="Name"
-                  placeholder="Enter a name"
-                  :value="course['Course Name']"
-                  required
-                  @input="
-                    $emit('update:course', { ...course, 'Course Name': $event })
-                  "
-                  class="pr-2"
-                />
-                <v-text-field
-                  label="Field of Study"
-                  placeholder="ex. CMSC"
-                  :value="course['Field of Study']"
-                  required
-                  @input="
-                    $emit('update:course', {
-                      ...course,
-                      'Field of Study': $event
-                    })
-                  "
-                  class="pr-2"
-                />
-                <v-text-field
-                  label="Course Number"
-                  placeholder="ex. 101"
-                  :value="course['course number']"
-                  required
-                  @input="
-                    $emit('update:course', {
-                      ...course,
-                      'course number': $event
-                    })
-                  "
-                  class="pr-2"
-                />
-                <v-text-field
-                  label="Number of Units"
-                  placeholder="ex. 1"
-                  :value="course.Units"
-                  required
-                  @input="$emit('update:course', { ...course, Units: $event })"
-                />
-              </v-layout>
-            </v-flex>
-            <v-flex md1 xs12>
-              <v-layout row wrap class="inline">
-                <v-btn color="success" block @click="$emit('add')">
-                  <v-icon>add</v-icon>
-                </v-btn>
-                <v-btn color="error" block @click="$emit('remove')">
-                  <v-icon>remove</v-icon>
-                </v-btn>
-              </v-layout>
-            </v-flex>
-          </v-layout>
-        </v-form>
+        <v-layout row wrap>
+          <v-flex sm12 md11>
+            <v-layout row wrap>
+              <v-text-field
+                label="Name"
+                placeholder="Enter a name"
+                :value="course['Course Name']"
+                required
+                @input="
+                  $emit('update:course', { ...course, 'Course Name': $event })
+                "
+                class="pr-2"
+                :rules="[v => !!v || 'Name is required']"
+              />
+              <v-text-field
+                label="Field of Study"
+                placeholder="ex. CMSC"
+                :value="course['Field of Study']"
+                required
+                @input="
+                  $emit('update:course', {
+                    ...course,
+                    'Field of Study': $event
+                  })
+                "
+                class="pr-2"
+              />
+              <v-text-field
+                label="Course Number"
+                placeholder="ex. 101"
+                :value="course['course number']"
+                required
+                @input="
+                  $emit('update:course', {
+                    ...course,
+                    'course number': $event
+                  })
+                "
+                class="pr-2"
+              />
+              <v-text-field
+                label="Number of Units"
+                placeholder="ex. 1"
+                :value="course.Units"
+                required
+                @input="$emit('update:course', { ...course, Units: $event })"
+                :rules="[v => (v && parseFloat(v) >= 0) || 'Must be a number']"
+              />
+            </v-layout>
+          </v-flex>
+          <v-flex md1 xs12>
+            <v-layout row wrap class="inline">
+              <v-btn color="success" block @click="$emit('add')">
+                <v-icon>add</v-icon>
+              </v-btn>
+              <v-btn color="error" block @click="$emit('remove')">
+                <v-icon>remove</v-icon>
+              </v-btn>
+            </v-layout>
+          </v-flex>
+        </v-layout>
         <v-divider />
       </v-container>
     </v-card-title>
@@ -79,6 +79,8 @@
                       placeholder="Unique Section ID"
                       :value="section.crn"
                       @input="updateSection($event, index, 'crn')"
+                      required
+                      :rules="[v => !!v || 'CRN is required']"
                     />
                   </v-flex>
                   <v-flex xs2>
@@ -106,6 +108,8 @@
                           :items="daysOfWeek"
                           :value="time.day"
                           @input="updateTime($event, index, timeIndex, 'day')"
+                          required
+                          :rules="[v => !!v || 'Day of week is required']"
                         />
                       </v-flex>
                       <v-flex xs2>

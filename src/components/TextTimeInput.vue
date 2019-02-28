@@ -6,6 +6,7 @@
     append-icon="access_time"
     @blur="sendChange()"
     :error="!valid"
+    :rules="[v => !!v || 'Time is required']"
   />
 </template>
 
