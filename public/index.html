@@ -10,7 +10,7 @@
     <meta name="description" content="Schedule Generator for students.">
     <meta name="og:title" content="University Schedule Generator">
     <meta name="og:description" content="Custom college schedule generator for students.">
-    <script src="https://cdn.ravenjs.com/3.26.4/raven.min.js" crossorigin="anonymous" type="text/javascript"></script>
+    <script src="https://browser.sentry-cdn.com/5.1.0/bundle.min.js" crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4436865-11" type="text/javascript"></script>
     <script type="text/javascript">if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
     window.dataLayer = window.dataLayer || [];
@@ -38,7 +38,9 @@
     });
     woopra.track();
   }
-  Raven.config('https://f23d61188d4845e3aaddc9be1bd4ec96@sentry.home.mikedombrowski.com/4').install()</script>
+
+  Sentry.init({ dsn: 'https://f23d61188d4845e3aaddc9be1bd4ec96@sentry.home.mikedombrowski.com/4' });
+  </script>
   </head>
   <body>
     <noscript>
