@@ -12,7 +12,7 @@
         "vue-class-component": "^7.1.0",
         "vue-property-decorator": "^8.3.0",
         "vue-storage-decorator": "^1.0.7",
-        "vuetify": "^2.1.7"
+        "vuetify": "^2.2.20"
     },
     "devDependencies": {
         "@vue/cli-plugin-eslint": "^4.0.5",
