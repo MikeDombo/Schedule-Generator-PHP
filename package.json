@@ -31,7 +31,7 @@
         "typescript": "^3.6.4",
         "vue-cli-plugin-vuetify": "^1.1.1",
         "vue-template-compiler": "^2.6.10",
-        "vuetify-loader": "^1.3.0"
+        "vuetify-loader": "^1.4.3"
     },
     "eslintConfig": {
         "root": true,
